@@ -73,7 +73,7 @@ var fsinit = function() {
 	src = 'page-template/page.css.tmpl';
 	dest = 'pages/page-home/client/page-home.css';
 	var templateContent = fs.readFileSync(`${__dirname}/${src}`);
-	var updatedContent = templateContent.replace(/FILE_NAME_GOES_HERE/g, 'page-home');
+	var updatedContent = templateContent.toString().replace(/FILE_NAME_GOES_HERE/g, 'page-home');
 	fs.writeFileSync(dest, updatedContent);
 
 	src = 'page-template/page.js.tmpl';
@@ -100,7 +100,7 @@ var fsinit = function() {
 	src = 'page-template/page.css.tmpl';
 	dest = 'pages/page-2/client/page-2.css';
 	var templateContent = fs.readFileSync(`${__dirname}/${src}`);
-	var updatedContent = templateContent.replace(/FILE_NAME_GOES_HERE/g, 'page-2');
+	var updatedContent = templateContent.toString().replace(/FILE_NAME_GOES_HERE/g, 'page-2');
 	fs.writeFileSync(dest, updatedContent);
 
 	src = 'page-template/page.js.tmpl';

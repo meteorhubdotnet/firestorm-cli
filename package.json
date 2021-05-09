@@ -1,6 +1,6 @@
 {
   "name": "firestorm-cli",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Command line tools for Firestorm - a rapid development framework for Meteor with Blaze and Iron Router",
   "main": "index.js",
   "repository": {
