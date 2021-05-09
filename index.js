@@ -63,7 +63,7 @@ var fsinit = function() {
 	// START: Copy templates
 	// ==============================================
 
-	src = 'page-template/page.html.tmpl';
+	src = 'page-template/page-home.html.tmpl';
 	dest = 'pages/page-home/client/page-home.html';
 	var templateContent = fs.readFileSync(`${__dirname}/${src}`);
 	var updatedContent = templateContent.toString().replace(/TEMPLATE_NAME_GOES_HERE/g, 'pageHome');
@@ -90,7 +90,7 @@ var fsinit = function() {
 	var updatedContent = templateContent.toString().replace(/TEMPLATE_NAME_GOES_HERE/g, 'pageHome');
 	fs.writeFileSync(dest, updatedContent);
 
-	src = 'page-template/page.html.tmpl';
+	src = 'page-template/page-2.html.tmpl';
 	dest = 'pages/page-2/client/page-2.html';
 	var templateContent = fs.readFileSync(`${__dirname}/${src}`);
 	var updatedContent = templateContent.toString().replace(/TEMPLATE_NAME_GOES_HERE/g, 'page2');
