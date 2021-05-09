@@ -73,27 +73,41 @@ var fsinit = function() {
 
 	src = 'page-template/page.js.tmpl';
 	dest = 'pages/page-home/page-home-route.js';
-	fs.copyFileSync(`${__dirname}/${src}`, dest, fs.constants.COPYFILE_EXCL);
+	var templateContent = fs.readFileSync(`${__dirname}/${src}`);
+	var updatedContent = templateContent.toString().replace(/TEMPLATE_NAME_GOES_HERE/g, 'pageHome');
+	updatedContent = updatedContent.replace(/PAGE_PATH_GOES_HERE/g, '/');
+	updatedContent = updatedContent.replace(/PAGE_TITLE_GOES_HERE/g, 'Homepage');
+	fs.writeFileSync(dest, updatedContent);
 
 	src = 'page-template/page-publications.js.tmpl';
 	dest = 'pages/page-home/server/page-home-publications.js';
-	fs.copyFileSync(`${__dirname}/${src}`, dest, fs.constants.COPYFILE_EXCL);
+	var templateContent = fs.readFileSync(`${__dirname}/${src}`);
+	var updatedContent = templateContent.toString().replace(/TEMPLATE_NAME_GOES_HERE/g, 'pageHome');
+	fs.writeFileSync(dest, updatedContent);
 
 	src = 'page-template/page.html.tmpl';
-	dest = 'pages/page-home/client/page-2.html';
+	dest = 'pages/page-2/client/page-2.html';
 	fs.copyFileSync(`${__dirname}/${src}`, dest, fs.constants.COPYFILE_EXCL);
 
 	src = 'page-template/page.css.tmpl';
-	dest = 'pages/page-home/client/page-2.css';
+	dest = 'pages/page-2/client/page-2.css';
 	fs.copyFileSync(`${__dirname}/${src}`, dest, fs.constants.COPYFILE_EXCL);
 
 	src = 'page-template/page.js.tmpl';
-	dest = 'pages/page-home/page-2-route.js';
-	fs.copyFileSync(`${__dirname}/${src}`, dest, fs.constants.COPYFILE_EXCL);
+	dest = 'pages/page-2/page-2-route.js';
+	var templateContent = fs.readFileSync(`${__dirname}/${src}`);
+	var updatedContent = templateContent.toString().replace(/TEMPLATE_NAME_GOES_HERE/g, 'page2');
+	updatedContent = updatedContent.replace(/PAGE_PATH_GOES_HERE/g, '/page/2');
+	updatedContent = updatedContent.replace(/PAGE_TITLE_GOES_HERE/g, 'Page 2');
+	fs.writeFileSync(dest, updatedContent);
+
 
 	src = 'page-template/page-publications.js.tmpl';
-	dest = 'pages/page-home/server/page-2-publications.js';
-	fs.copyFileSync(`${__dirname}/${src}`, dest, fs.constants.COPYFILE_EXCL);
+	dest = 'pages/page-2/server/page-2-publications.js';
+	var templateContent = fs.readFileSync(`${__dirname}/${src}`);
+	var updatedContent = templateContent.toString().replace(/TEMPLATE_NAME_GOES_HERE/g, 'page2');
+	fs.writeFileSync(dest, updatedContent);
+
 
 	src = 'init-template/head.html.tmpl';
 	dest = 'client/head.html';
@@ -122,6 +136,7 @@ var fsinit = function() {
 	// ==============================================
 	// END: Copy templates
 	// ==============================================
+
 
 	// create empty files
 	fs.open('client/global.css', 'w', (error, file) => { if (error) { return console.log(error); } });
