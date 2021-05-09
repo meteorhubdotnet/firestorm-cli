@@ -65,11 +65,16 @@ var fsinit = function() {
 
 	src = 'page-template/page.html.tmpl';
 	dest = 'pages/page-home/client/page-home.html';
-	fs.copyFileSync(`${__dirname}/${src}`, dest, fs.constants.COPYFILE_EXCL);
+	var templateContent = fs.readFileSync(`${__dirname}/${src}`);
+	var updatedContent = templateContent.toString().replace(/TEMPLATE_NAME_GOES_HERE/g, 'pageHome');
+	updatedContent = updatedContent.replace(/FILE_NAME_GOES_HERE/g, 'page-home');
+	fs.writeFileSync(dest, updatedContent);
 
 	src = 'page-template/page.css.tmpl';
 	dest = 'pages/page-home/client/page-home.css';
-	fs.copyFileSync(`${__dirname}/${src}`, dest, fs.constants.COPYFILE_EXCL);
+	var templateContent = fs.readFileSync(`${__dirname}/${src}`);
+	var updatedContent = templateContent.replace(/FILE_NAME_GOES_HERE/g, 'page-home');
+	fs.writeFileSync(dest, updatedContent);
 
 	src = 'page-template/page.js.tmpl';
 	dest = 'pages/page-home/page-home-route.js';
@@ -87,11 +92,16 @@ var fsinit = function() {
 
 	src = 'page-template/page.html.tmpl';
 	dest = 'pages/page-2/client/page-2.html';
-	fs.copyFileSync(`${__dirname}/${src}`, dest, fs.constants.COPYFILE_EXCL);
+	var templateContent = fs.readFileSync(`${__dirname}/${src}`);
+	var updatedContent = templateContent.toString().replace(/TEMPLATE_NAME_GOES_HERE/g, 'page2');
+	updatedContent = updatedContent.replace(/FILE_NAME_GOES_HERE/g, 'page-2');
+	fs.writeFileSync(dest, updatedContent);
 
 	src = 'page-template/page.css.tmpl';
 	dest = 'pages/page-2/client/page-2.css';
-	fs.copyFileSync(`${__dirname}/${src}`, dest, fs.constants.COPYFILE_EXCL);
+	var templateContent = fs.readFileSync(`${__dirname}/${src}`);
+	var updatedContent = templateContent.replace(/FILE_NAME_GOES_HERE/g, 'page-2');
+	fs.writeFileSync(dest, updatedContent);
 
 	src = 'page-template/page.js.tmpl';
 	dest = 'pages/page-2/page-2-route.js';
@@ -100,7 +110,6 @@ var fsinit = function() {
 	updatedContent = updatedContent.replace(/PAGE_PATH_GOES_HERE/g, '/page/2');
 	updatedContent = updatedContent.replace(/PAGE_TITLE_GOES_HERE/g, 'Page 2');
 	fs.writeFileSync(dest, updatedContent);
-
 
 	src = 'page-template/page-publications.js.tmpl';
 	dest = 'pages/page-2/server/page-2-publications.js';
