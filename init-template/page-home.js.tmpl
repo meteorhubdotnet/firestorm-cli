@@ -1,0 +1,25 @@
+import { Router } from 'meteor/meteorhubdotnet:iron-router';
+
+Router.route(
+	'/',
+	{
+		// Route name
+		name: 'pageHome',
+
+		// Page Data
+		data: function() {
+
+			// Page title to display in top navbar
+			const title = 'Home';
+
+			// Page params
+			const params = this.params;
+
+            // Return
+			return { params, title };
+
+		}
+
+	},
+
+);

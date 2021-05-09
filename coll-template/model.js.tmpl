@@ -1,0 +1,77 @@
+MODEL_CLASS_NAME_GOES_HERE = class {
+
+    constructor({ data, id } = {}) {
+
+        let model = data || {};
+
+        // check for email or user ID or userSlug
+        if (id) {
+
+            model = COLLECTION_CLASS_NAME_GOES_HERE.findOne({ _id: id });
+
+        }
+
+
+        // Set members of object
+        if (model) {
+
+            const modelProperties = Object.keys(model);
+            for (let i = 0; i < modelProperties.length; i += 1) {
+
+                const prop = modelProperties[i];
+                this[prop] = model[prop];
+
+            }
+
+        }
+
+    }
+
+    /**
+     * Assigns data values to members
+     * @param data
+     */
+    populate({ data }) {
+
+        if (data) {
+
+            Object.assign(this, data);
+
+        }
+
+    }
+
+    save() {
+
+        if (this._id) {
+
+            return this.update();
+
+        } else {
+
+            return this.create();
+
+        }
+
+    }
+
+    create() {
+
+        this._id = COLLECTION_CLASS_NAME_GOES_HERE.insert(this);
+        return !!this._id;
+
+    }
+
+    update() {
+
+        return COLLECTION_CLASS_NAME_GOES_HERE.update({ _id: this._id }, { $set: this });
+
+    }
+
+    remove() {
+
+        return COLLECTION_CLASS_NAME_GOES_HERE.remove({ _id: this._id });
+
+    }
+
+}

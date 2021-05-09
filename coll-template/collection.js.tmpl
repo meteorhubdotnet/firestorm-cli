@@ -1,0 +1,51 @@
+import SimpleSchema from 'simpl-schema';
+
+class COLLECTION_CLASS_NAME_GOES_HERECollection extends Mongo.Collection {
+
+    insert(data, callback) {
+
+        return super.insert(data, callback);
+
+    }
+
+    update(selector, data, callback) {
+
+        return super.update(selector, data, callback);
+
+    }
+
+    remove(selector, callback) {
+
+        return super.remove(selector, callback);
+
+    }
+
+}
+
+COLLECTION_CLASS_NAME_GOES_HERE = new COLLECTION_CLASS_NAME_GOES_HERECollection('COLLECTION_NAME_GOES_HERE');
+
+COLLECTION_CLASS_NAME_GOES_HERE.allow({
+
+    insert(userId, doc) {
+        // The user must be logged in and the document must be owned by the user.
+        return userId && doc.userId === userId;
+    },
+    update(userId, doc, fields, modifier) {
+        // Can only change your own documents.
+        return doc.userId === userId;
+    },
+    remove(userId, doc) {
+        // Can only remove your own documents.
+        return doc.userId === userId;
+    },
+    // Only fetch userId from the database to improve performance
+    fetch: ['userId']
+
+});
+
+const COLLECTION_CLASS_NAME_GOES_HERESchema = new SimpleSchema({
+    _id: { type: String, regEx: SimpleSchema.RegEx.Id },
+});
+
+COLLECTION_CLASS_NAME_GOES_HERE.attachSchema(COLLECTION_CLASS_NAME_GOES_HERESchema);
+

@@ -1,0 +1,31 @@
+{
+  "name": "firestorm-cli",
+  "version": "1.0.0",
+  "description": "Command line tools for Firestorm - a rapid development framework for Meteor with Blaze and Iron Router",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meteorhubdotnet/firestorm-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "firestorm",
+    "meteor",
+    "blaze"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yacine Merzouk <yacine@merzouk.ca> (https://yacine.merzouk.ca)",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.67.0",
+    "yargs": "^4.2.0"
+  },
+  "bin": {
+    "fsinit": "./bin/fsinit",
+    "fspage": "./bin/fspage",
+    "fscomp": "./bin/fscomp",
+    "fscoll": "./bin/fscoll"
+  }
+}
