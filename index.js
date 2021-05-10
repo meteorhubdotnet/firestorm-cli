@@ -146,21 +146,20 @@ var fsinit = function() {
 	// END: Copy templates
 	// ==============================================
 
-
-	// create empty files
-	fs.open('client/global.css', 'w', (error, file) => { if (error) { return console.log(error); } });
-	fs.open('client/global.js', 'w', (error, file) => { if (error) { return console.log(error); } });
-
 	// remove default Meteor files on the client
 	fs.unlinkSync('client/main.html');
 	fs.unlinkSync('client/main.js');
 	fs.unlinkSync('client/main.css');
 
+	// create empty files
+	fs.open('client/main.css', 'w', (error, file) => { if (error) { return console.log(error); } });
+	fs.open('client/main.js', 'w', (error, file) => { if (error) { return console.log(error); } });
+
 	// Search-and-replace magic to use Meteor file autoloading
 	src = 'package.json';
 	var templateContent = fs.readFileSync(src);
 	fs.unlinkSync(src);
-	var updatedContent = templateContent.toString().replace(/mainModule"/g, 'meteor_main_module_turnedOffByFirestorm');
+	var updatedContent = templateContent.toString().replace(/mainModule/g, 'meteor_main_module_turnedOffByFirestorm');
 	fs.writeFileSync(src, updatedContent);
 
 	// Let people know what's going on...
