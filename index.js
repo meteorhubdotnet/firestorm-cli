@@ -156,6 +156,12 @@ var fsinit = function() {
 	fs.unlinkSync('client/main.js');
 	fs.unlinkSync('client/main.css');
 
+	// Search-and-replace magic to use Meteor file autoloading
+	src = 'package.json';
+	var templateContent = fs.readFileSync(src);
+	fs.unlinkSync(src);
+	var updatedContent = templateContent.toString().replace(/mainModule"/g, 'meteor_main_module_turnedOffByFirestorm');
+	fs.writeFileSync(src, updatedContent);
 
 	// Let people know what's going on...
 	console.log('File templates copied...');
